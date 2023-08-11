@@ -1,0 +1,5 @@
+.badge-uppercase {
+    & > span {
+        text-transform: none;
+    }
+}
