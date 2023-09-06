@@ -11,7 +11,7 @@ const useCMA = () => {
 		const cma = createClient({ apiAdapter: sdk.cmaAdapter });
 
 		cma.getSpace(sdk.ids.space).then((space) => {
-			
+
 			setSpace(space);
 
 			space.getEnvironment(sdk.ids.environment).then((environment) => {

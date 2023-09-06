@@ -1,26 +1,24 @@
 import { useEffect, useState } from 'react';
-import { useSDK } from '@contentful/react-apps-toolkit';
+import useCMA from './useCMA';
 
 const useUser = (id) => {
 
 	const [user, setUser] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
-	const sdk = useSDK();
+
+	const {
+		space
+	} = useCMA();
 
 	useEffect(() => {
-		
-        if (!id) {
-            setUser(null);
-            setIsLoading(false);
-            return;
-        };
+
+		if (!space || !id) return;
 
         setIsLoading(true);
 
-		sdk.space.getUsers().then(({items}) => {
-            const user = items.filter((user) => user.sys.id === id);
-            (user.length === 1) ? setUser(user[0]) : setIsError(true);
+		space.getSpaceUser(id).then((user) => {
+			setUser(user);
             setIsLoading(false);
 		}).catch((error) => {
             setIsError(true);
@@ -29,9 +27,10 @@ const useUser = (id) => {
 
 		return () => {
 			setIsLoading(false);
+			setIsError(false);
             setUser(null);
 		};
-	}, [sdk, id]);
+	}, [space, id]);
 
 	return {
 		user,

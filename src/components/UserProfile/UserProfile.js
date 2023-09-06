@@ -1,4 +1,4 @@
-import { Caption, Stack, TextLink } from '@contentful/f36-components';
+import { Stack, TextLink, Paragraph } from '@contentful/f36-components';
 import { Avatar } from '@contentful/f36-avatar';
 import tokens from '@contentful/f36-tokens';
 
@@ -8,6 +8,7 @@ const UserProfile = ({
 	avatarUrl = '',
 	email = '',
 }) => {
+
 	return (
 		<Stack alignItems='center' flexDirection='row' spacing='spacingXs'>
 			{avatarUrl && (
@@ -23,23 +24,33 @@ const UserProfile = ({
 				alignItems='start'
 			>
 				{(firstName || lastName) && (
-					<Caption>
+					<Paragraph 
+						style={{
+							fontSize: tokens.fontSizeS,
+							margin: 0,
+							maxWidth: 250
+						}}
+						isTruncated
+					>
 						{firstName} {lastName}
-					</Caption>
+					</Paragraph>
 				)}
 				{email && (
-
-						<TextLink
-                            style={{
-                                fontSize: tokens.fontSizeS,
-                            }}
-							href={`mailto:${email}`}
-							target='_blank'
-							rel='noopener noreferrer'
-						>
-							{email}
-						</TextLink>
-					
+					<TextLink
+						href={`mailto:${email}`}
+						target='_blank'
+						rel='noopener noreferrer'
+						style={{
+							fontSize: tokens.fontSizeS,
+							margin: 0,
+							maxWidth: 250,
+							textOverflow: 'ellipsis',
+							overflow: 'hidden',
+							display: 'inline-block'
+						}}
+					>
+						{email}
+					</TextLink>
 				)}
 			</Stack>
 		</Stack>

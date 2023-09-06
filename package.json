@@ -7,7 +7,7 @@
     "@contentful/f36-avatar": "^4.0.0-alpha.6",
     "@contentful/f36-components": "4.48.0",
     "@contentful/f36-tokens": "4.0.2",
-    "@contentful/react-apps-toolkit": "1.2.16",
+    "@contentful/react-apps-toolkit": "^1.2.16",
     "contentful-management": "10.39.2",
     "emotion": "10.0.27",
     "react": "18.2.0",
@@ -47,6 +47,7 @@
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "cross-env": "7.0.3",
+    "husky": "^8.0.3",
     "sass": "^1.65.1",
     "typescript": "4.9.5"
   },
